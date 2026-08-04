@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%stylesheet_link_tag "posts/index", media: "all", data: { turbolinks: false }%>
+</head>
+<body>
+
+  <% if user_signed_in? %>
+    <%= "Signed in as: " + @user.email %>
+    <br>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= link_to 'Sign out', destroy_user_session_path, data: { turbo_method: :delete } %>
+  <% else %>
+    <%= link_to 'Sign in', new_user_session_path %>
+    <%= link_to 'Sign up', new_user_registration_path %>
+  <% end %>
+
+  <% @posts.each do |p| %>
+    <div class="post">
+      <% if user_signed_in? %>
+        <p><%= "user: " + p.user.email %></p>
+      <% else %>
+        <p>User: Anonymous</p>
+      <% end %>
+      <p><%= p.content %></p>
+    </div>
+  <% end %>
+
+
+</body>
+</html>

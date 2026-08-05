@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+ <%= link_to 'Back To Posts', posts_path %>
+  <%= form_with model: @post do |form| %>
+    <div>
+      <%= form.text_area :content, size: "70x5" %>
+    </div>
+    <%= form.submit %>
+  <% end %>
+</body>
+</html>
